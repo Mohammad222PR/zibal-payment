@@ -130,6 +130,7 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 > **Designed & Developed by Mohammad Hossein** ✨
 
-![Zibal Payment](https://gateway.zibal.ir/favicon.ico)
+![Zibal Payment](https://github.com/user-attachments/assets/bd12dfd0-6670-4d6f-b3d5-b1d7a4ff579a)
+
 
 ---
