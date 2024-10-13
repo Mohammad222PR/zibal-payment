@@ -1,7 +1,7 @@
 import json
 import os
+from typing import Any, Dict, Optional
 import requests
-from typing import Any, Dict
 
 
 class Zibal:
@@ -13,22 +13,24 @@ class Zibal:
         _payment_verify_url (str): The URL for verifying payments.
         _payment_page_url (str): The URL for the payment page.
         _callback_url (str): The callback URL after payment.
-        merchant_id (str): The merchant ID for authentication.
+        merchant_id (Optional[str]): The merchant ID for authentication.
     """
 
     _payment_request_url: str = "https://gateway.zibal.ir/v1/request"
     _payment_verify_url: str = "https://gateway.zibal.ir/v1/verify"
     _payment_page_url: str = "https://gateway.zibal.ir/start/"
     _callback_url: str = "https://webhook.site/ac93c06c-9dc8-4898-bed6-57927995f661"
+    merchant_id: Optional[str] = os.environ.get("ZIBAL_PAYMENT_MERCHANT_ID")
 
-    def __init__(self, merchant_id: str = os.environ.get("ZIBAL_PAYMENT_MERCHANT_ID")) -> None:
+    def __init__(self, merchant_id: Optional[str] = None) -> None:
         """
         Initializes the Zibal class with a merchant ID.
 
         Args:
-            merchant_id (str): The merchant ID used for Zibal's API.
+            merchant_id (Optional[str]): The merchant ID used for Zibal's API.
         """
-        self.merchant_id = merchant_id
+        if merchant_id:
+            self.merchant_id = merchant_id
 
     def payment_request(self, amount: int, description: str = "پرداختی کاربر") -> Dict[str, Any]:
         """
@@ -39,15 +41,15 @@ class Zibal:
             description (str, optional): Description for the payment. Defaults to "پرداختی کاربر".
 
         Returns:
-            dict: A dictionary containing the response from the payment request.
+            Dict[str, Any]: A dictionary containing the response from the payment request.
         """
-        payload = {
+        payload: Dict[str, Any] = {
             "merchant": self.merchant_id,
             "amount": str(amount),
             "callbackUrl": self._callback_url,
             "description": description,
         }
-        headers = {"Content-Type": "application/json"}
+        headers: Dict[str, str] = {"Content-Type": "application/json"}
 
         response = requests.post(
             self._payment_request_url, headers=headers, data=json.dumps(payload)
@@ -63,10 +65,10 @@ class Zibal:
             track_id (str): The tracking ID of the payment.
 
         Returns:
-            dict: A dictionary containing the verification response.
+            Dict[str, Any]: A dictionary containing the verification response.
         """
-        payload = {"merchant": self.merchant_id, "trackId": track_id}
-        headers = {"Content-Type": "application/json"}
+        payload: Dict[str, str] = {"merchant": self.merchant_id, "trackId": track_id}
+        headers: Dict[str, str] = {"Content-Type": "application/json"}
 
         response = requests.post(
             self._payment_verify_url, headers=headers, data=json.dumps(payload)
