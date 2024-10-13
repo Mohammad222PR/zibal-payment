@@ -20,7 +20,8 @@ class Zibal:
     _payment_verify_url: str = "https://gateway.zibal.ir/v1/verify"
     _payment_page_url: str = "https://gateway.zibal.ir/start/"
     _callback_url: str = "https://webhook.site/ac93c06c-9dc8-4898-bed6-57927995f661"
-    merchant_id: Optional[str] = os.environ.get("ZIBAL_PAYMENT_MERCHANT_ID")
+    merchant_id: Optional[str] = os.environ.get(
+        "ZIBAL_PAYMENT_MERCHANT_ID")  # Use "zibal" for sandbox mode or retrieve from environment variables for production.
 
     def __init__(self, merchant_id: Optional[str] = None) -> None:
         """
