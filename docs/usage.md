@@ -1,25 +1,24 @@
-
 ### `usage.md`
 
 # Usage of Zibal Payment Package
 
-This document provides instructions on how to use the Zibal Payment package effectively in your Python applications.
+This document provides detailed instructions on how to use the Zibal Payment package in your Python applications.
 
 ## Getting Started
 
 ### 1. Initialization
 
-To start using the Zibal Payment package, you need to create an instance of `ZibalDjangoClient` (or `ZibalClient` if you prefer) with your merchant ID.
+To start using the Zibal Payment package, initialize an instance of `ZibalClient` (or `ZibalDjangoClient` if you’re working within Django) with your merchant ID. You can also specify `sandbox`, `timeout`, and `enable_logging` options.
 
 ```python
-from zibal_payment.client import ZibalDjangoClient
+from zibal_payment.client import ZibalClient
 
-client = ZibalDjangoClient()
+client = ZibalClient(merchant_id="your_merchant_id")
 ```
 
 ### 2. Making a Payment Request
 
-You can send a payment request by calling the `payment_request` method. Here’s an example:
+You can send a payment request using the `payment_request` method. Here’s an example:
 
 ```python
 response = client.payment_request(
@@ -34,7 +33,7 @@ print(f"Track ID: {track_id}")
 
 ### 3. Generating a Payment URL
 
-Once you have the `track_id`, you can generate a payment URL:
+After receiving the `track_id`, generate a payment URL:
 
 ```python
 payment_url = client.generate_payment_url(track_id)
@@ -43,7 +42,7 @@ print(f"Payment URL: {payment_url}")
 
 ### 4. Verifying a Payment
 
-To verify a payment, use the `payment_verify` method:
+To verify a completed payment, use the `payment_verify` method:
 
 ```python
 verification_response = client.payment_verify(track_id=track_id)
@@ -52,7 +51,7 @@ print("Verification response:", verification_response)
 
 ### 5. Handling Errors
 
-Make sure to handle exceptions when making payment requests or verifications. Use the `ZibalError` exception to catch any errors:
+Make sure to handle potential errors during payment requests or verifications by catching `ZibalError` exceptions:
 
 ```python
 from zibal_payment.exceptions import ZibalError
@@ -65,4 +64,4 @@ except ZibalError as e:
 
 ## Conclusion
 
-With this package, integrating Zibal payments into your application is straightforward and efficient. For further assistance, refer to the API reference section.
+This package provides an efficient way to integrate Zibal payments into your application. For additional details, please refer to the API reference section.
