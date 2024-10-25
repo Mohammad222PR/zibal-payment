@@ -19,7 +19,7 @@
 
 ## Overview
 
-The **[Zibal Payment Package](https://pypi.org/project/django-zibal-payment/)** is a Python package designed to simplify the integration of the Zibal payment gateway into Django and other Python applications. Whether you're working with a simple Python application or a Django project, this package provides an easy-to-use solution for managing Zibal payments.
+The **[Zibal Payment Package](https://pypi.org/project/zibal-payment/)** is a Python package designed to simplify the integration of the Zibal payment gateway into Django and other Python applications. Whether you're working with a simple Python application or a Django project, this package provides an easy-to-use solution for managing Zibal payments.
 
 ### 🌟 **Features**
 
