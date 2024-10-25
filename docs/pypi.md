@@ -1,54 +1,63 @@
-Certainly! Here’s a more detailed description for your PyPI page:
+# Zibal Payment
 
----
-
-# zibal_payment
-
-`zibal_payment` is a comprehensive and secure Python package crafted specifically for integrating Zibal’s online payment gateway into Django applications. This package simplifies payment processing tasks, including creating payment requests, generating payment URLs, and verifying completed transactions with Zibal’s services.
-
-![GitHub Stars](https://img.shields.io/github/stars/Mohammad222PR/zibal-payment?style=flat-square) ![GitHub Forks](https://img.shields.io/github/forks/Mohammad222PR/zibal-payment?style=flat-square) ![Python Version](https://img.shields.io/badge/python-3.8%2B-blue?style=flat-square) ![MIT License](https://img.shields.io/github/license/Mohammad222PR/zibal-payment?style=flat-square)
+**Zibal Payment** is a Python package designed to easily integrate Zibal’s online payment gateway into Django applications, providing a smooth setup process and efficient handling of payment requests, URL generation, and transaction verification. 
 
 ## Key Features
 
-- **Simple Integration**: Quickly integrate Zibal’s payment gateway into Django projects with minimal setup.
-- **Full Payment Lifecycle Support**: Handle all steps of the payment process, from creating payment requests to verifying transactions.
-- **Sandbox Mode**: Ideal for testing payment flows in a controlled environment without real transactions.
-- **Secure and Reliable**: Built to ensure the security and integrity of transaction data.
+- **Quick Integration**: Seamlessly integrate Zibal’s payment gateway into Django projects with minimal configuration.
+- **Complete Payment Lifecycle**: Supports all steps of the payment process, from request creation to transaction verification.
+- **Sandbox Mode**: Enables safe testing in a controlled environment without real transactions.
+- **Secure and Reliable**: Built with robust measures to ensure transaction data security and reliability.
+
+---
 
 ## Installation
 
-Install the package from PyPI:
+First, ensure that Django is installed (version 3.0 or higher is required):
+
+```bash
+pip install django>=3.0
+```
+
+Install the zibal_payment package from PyPI:
 
 ```bash
 pip install zibal-payment
 ```
 
+---
+
 ## Getting Started
 
-Below is a basic guide on using the package in Django projects.
+Follow these steps to configure and use zibal_payment in your Django projects.
 
 ### 1. Initializing the Client
 
-By default, `ZibalDjangoClient` is the primary client for Django integrations. Just initialize it with your Zibal merchant ID.
+To initialize the `ZibalClient`, provide your Zibal `merchant_id`. This client is essential for interacting with Zibal’s payment services.
 
 ```python
-from zibal_payment.client import ZibalDjangoClient
+from zibal_payment.client import ZibalClient
 
-# Initialize the ZibalDjangoClient for handling payment requests with default settings
-client = ZibalDjangoClient()
-
+# Initialize ZibalClient with your merchant ID for handling payment requests
+client = ZibalClient(merchant_id="your_merchant_id", sandbox=True)
 ```
+
+#### Parameters
+- **`merchant_id` (str)**: Your Zibal merchant ID.
+- **`sandbox` (bool, optional)**: Set to `True` for testing purposes. Defaults to `True`.
+- **`timeout` (int or float, optional)**: The maximum time (in seconds) to wait for Zibal's response. Defaults to `10` seconds.
+- **`enable_logging` (bool, optional)**: Enables logging for debugging purposes. Defaults to `True`.
 
 ### 2. Creating a Payment Request
 
-Use the `payment_request` method to create a payment request. Specify essential details such as the amount, callback URL, and a description.
+To initiate a payment request, use the `payment_request` method, specifying the `amount`, `callback_url`, and `description`. This method returns essential transaction information, including a `trackId`.
 
 ```python
 try:
     response = client.payment_request(
         amount=1000,  # Amount in Rials
-        callback_url="https://example.com/callback",  # Callback URL for the response
-        description="Order #123"
+        callback_url="https://example.com/callback",  # URL to redirect users after payment
+        description="Order #123"  # Payment description
     )
     track_id = response.get("trackId")
     print(f"Payment request successful. Track ID: {track_id}")
@@ -57,18 +66,29 @@ except ZibalError as e:
     print(f"Payment request error: {e}")
 ```
 
+#### Parameters
+- **`amount` (int)**: Amount in Rials.
+- **`callback_url` (str)**: URL where users will be redirected post-payment.
+- **`description` (str)**: Description of the payment (e.g., order details).
+
+#### Returns
+A dictionary containing `trackId` and `result`. Track ID is necessary for generating a payment URL or verifying the transaction.
+
 ### 3. Generating a Payment URL
 
-Once you have a `track_id`, generate a user-friendly URL to direct customers to the Zibal payment page.
+With the obtained `trackId`, you can generate a user-friendly URL for redirecting users to Zibal’s payment page.
 
 ```python
 payment_url = client.generate_payment_url(track_id)
 print(f"Payment URL: {payment_url}")
 ```
 
+#### Returns
+- **URL** (str): The complete URL for the user to make a payment on Zibal’s gateway.
+
 ### 4. Verifying a Payment
 
-After customers complete their payment, verify it using the `payment_verify` method to confirm the transaction's success.
+After users complete the payment, use `payment_verify` to confirm the transaction with Zibal using the `trackId`.
 
 ```python
 try:
@@ -79,13 +99,55 @@ except ZibalError as e:
     print(f"Verification error: {e}")
 ```
 
+#### Parameters
+- **`track_id` (str)**: Track ID of the transaction to verify.
+
+#### Returns
+A dictionary containing verification details, including `result`, `amount`, and other transaction data.
+
+### Example Workflow
+
+Here's a quick workflow example to illustrate how these functions can be combined:
+
+```python
+from zibal_payment.client import ZibalClient
+
+client = ZibalClient(merchant_id="your_merchant_id")
+
+try:
+    # Step 1: Create a payment request
+    response = client.payment_request(
+        amount=1000,
+        callback_url="https://example.com/callback",
+        description="Test Payment"
+    )
+    track_id = response.get("trackId")
+    
+    # Step 2: Generate the payment URL
+    payment_url = client.generate_payment_url(track_id)
+    print(f"Direct user to this URL for payment: {payment_url}")
+
+    # Step 3: After payment, verify the transaction
+    verification = client.payment_verify(track_id)
+    print("Payment verification details:", verification)
+
+except ZibalError as e:
+    print(f"An error occurred: {e}")
+```
+
+---
+
 ## API Reference
 
-For a complete list of methods, parameters, and error handling strategies, see the full [API Reference](https://github.com/Mohammad222PR/zibal-payment/blob/main/docs/api_refrence).
+For complete details on methods, parameters, and error handling, please refer to the [API Documentation](https://github.com/Mohammad222PR/zibal_payment/docs/api_reference.md).
+
+---
 
 ## Contributions and Support
 
-Contributions are welcome to further enhance this package’s functionality. For reporting issues or suggesting improvements, visit the [GitHub repository](https://github.com/Mohammad222PR/zibal_payment). Additionally, refer to the [Usage Guide](https://github.com/Mohammad222PR/zibal-payment/blob/main/docs/usage.md) for more in-depth instructions on integrating the package into your projects.
+We welcome community contributions! To report issues, request features, or contribute to this project, please visit our [GitHub repository](https://github.com/Mohammad222PR/zibal_payment). 
 
+For further instructions on advanced usage and troubleshooting, see the [Usage Guide](https://github.com/Mohammad222PR/zibal_payment/docs/usage.md).
 
+---
 
