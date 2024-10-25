@@ -22,7 +22,7 @@ The Zibal Payment package allows developers to easily handle payment requests an
 To install the Zibal Payment package, use pip:
 
 ```bash
-pip install zibal-payment
+pip install django-zibal-payment
 ```
 
 ## Usage
