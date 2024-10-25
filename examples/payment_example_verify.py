@@ -6,7 +6,6 @@ def example_payment_verify(track_id: str):
     client = ZibalClient(merchant_id)
 
     try:
-        # تأیید پرداخت
         response = client.payment_verify(track_id)
         print(f"Verification response: {response}")
     except ZibalError as e:
