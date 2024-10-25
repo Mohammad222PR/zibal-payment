@@ -24,7 +24,6 @@ The **[Zibal Payment Package](https://pypi.org/project/django-zibal-payment/)** 
 ### 🌟 **Features**
 
 - **Seamless Integration**: Easily integrate Zibal payments into your Django application or standalone Python projects.
-- **Default Django Client**: The package uses `ZibalDjangoClient` by default for Django projects, making the setup even simpler.
 - **Customizable**: Option to switch to `ZibalClient` for non-Django Python applications.
 - **Full API Support**: Supports payment requests, verifications, and generating payment URLs.
 
