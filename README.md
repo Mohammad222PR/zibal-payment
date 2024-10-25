@@ -28,11 +28,6 @@ The **[Zibal Payment Package](https://pypi.org/project/django-zibal-payment/)** 
 - **Customizable**: Option to switch to `ZibalClient` for non-Django Python applications.
 - **Full API Support**: Supports payment requests, verifications, and generating payment URLs.
 
-
-## 📖 **Quick Start**
-
-To get started quickly, refer to our detailed [Usage Guide](docs/usage.md). This guide will show you how to initialize the package, make payment requests, verify payments, and more.
-
 ## 📚 **Documentation**
 
 For detailed documentation and examples, please visit the [Full Documentation](docs/index.md).
