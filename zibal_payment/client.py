@@ -1,6 +1,5 @@
 import json
 import requests
-from django.conf import settings
 from typing import Dict, Any, Union
 from zibal_payment.exceptions import ZibalError
 
@@ -124,16 +123,3 @@ class ZibalClient:
         """Logs messages if logging is enabled."""
         if self.enable_logging:
             print(f"ERROR: {message}" if error else message)
-
-
-class ZibalDjangoClient(ZibalClient):
-    def __init__(self):
-        """
-        Initializes ZibalDjango with settings from Django's settings.py file.
-        """
-        merchant_id = settings.ZIBAL_MERCHANT_ID
-        sandbox = getattr(settings, 'ZIBAL_SANDBOX', True)
-        timeout = getattr(settings, 'ZIBAL_TIMEOUT', 10)
-        enable_logging = getattr(settings, 'ZIBAL_ENABLE_LOGGING', True)
-
-        super().__init__(merchant_id=merchant_id, timeout=timeout, sandbox=sandbox, enable_logging=enable_logging)
