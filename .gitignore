@@ -169,7 +169,13 @@ poetry.toml
 
 # ruff
 .ruff_cache/
-
+./scripts
+# Ignore build directories
+dist/
+build/
+*.egg-info/
+django_zibal_payment.egg-info
+scripts
 # LSP config files
 pyrightconfig.json
 .idea
