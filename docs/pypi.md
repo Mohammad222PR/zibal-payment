@@ -13,12 +13,6 @@
 
 ## Installation
 
-First, ensure that Django is installed (version 3.0 or higher is required):
-
-```bash
-pip install django>=3.0
-```
-
 Install the zibal_payment package from PyPI:
 
 ```bash
@@ -145,9 +139,9 @@ For complete details on methods, parameters, and error handling, please refer to
 
 ## Contributions and Support
 
-We welcome community contributions! To report issues, request features, or contribute to this project, please visit our [GitHub repository](https://github.com/Mohammad222PR/zibal_payment). 
+We welcome community contributions! To report issues, request features, or contribute to this project, please visit our [GitHub repository](https://github.com/Mohammad222PR/zibal-payment). 
 
-For further instructions on advanced usage and troubleshooting, see the [Usage Guide](https://github.com/Mohammad222PR/zibal_payment/docs/usage.md).
+For further instructions on advanced usage and troubleshooting, see the [Usage Guide](https://github.com/Mohammad222PR/zibal-payment/blob/main/docs/usage.md).
 
 ---
 
