@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="zibal_payment",
-    version='0.1.0',
+    version='1.0.2',
     author='Mohammad Eslami',
     description='A simple and secure Python package for integrating online payment processing in Django projects.',
     long_description=open('docs/pypi.md', encoding='utf-8').read(),
