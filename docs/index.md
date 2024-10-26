@@ -29,14 +29,6 @@ The **Zibal Payment** package provides developers with a straightforward and eff
 
 To install the **Zibal Payment** package, use pip as follows:
 
-### Prerequisites
-
-Ensure that Django is installed in your development environment. The package requires Django version 3.0 or higher:
-
-```bash
-pip install django>=3.0
-```
-
 ### Install the Zibal Payment Package
 
 Next, install the Zibal Payment package from PyPI:
