@@ -6,20 +6,22 @@
 
 <div align="center">
 
-![GitHub Stars](https://img.shields.io/github/stars/Mohammad222PR/zibal-payment?style=for-the-badge&logo=github)
-![GitHub Forks](https://img.shields.io/github/forks/Mohammad222PR/zibal-payment?style=for-the-badge&logo=github)
-![GitHub Issues](https://img.shields.io/github/issues/Mohammad222PR/zibal-payment?style=for-the-badge&logo=github)
-![Python Version](https://img.shields.io/badge/python-3.8%2B-blue?style=for-the-badge&logo=python)
-![MIT License](https://img.shields.io/github/license/Mohammad222PR/zibal-payment?style=for-the-badge&color=yellow)
-![Contributors](https://img.shields.io/github/contributors/Mohammad222PR/zibal-payment?style=for-the-badge&color=brightgreen)
-![GitHub Repo Size](https://img.shields.io/github/repo-size/Mohammad222PR/zibal-payment?style=for-the-badge&color=critical)
-![Commit Activity](https://img.shields.io/github/commit-activity/m/Mohammad222PR/zibal-payment?style=for-the-badge&color=orange)
-  
+![GitHub Stars](https://img.shields.io/github/stars/Mohammad222PR/zibal-payment?style=flat&logo=github)
+![GitHub Forks](https://img.shields.io/github/forks/Mohammad222PR/zibal-payment?style=flat&logo=github)
+![GitHub Issues](https://img.shields.io/github/issues/Mohammad222PR/zibal-payment?style=flat&logo=github)
+![Python Version](https://img.shields.io/badge/python-3.8%2B-blue?style=flat&logo=python)
+![MIT License](https://img.shields.io/github/license/Mohammad222PR/zibal-payment?style=flat)
+![Contributors](https://img.shields.io/github/contributors/Mohammad222PR/zibal-payment?style=flat)
+![GitHub Repo Size](https://img.shields.io/github/repo-size/Mohammad222PR/zibal-payment?style=flat)
+![Commit Activity](https://img.shields.io/github/commit-activity/m/Mohammad222PR/zibal-payment?style=flat)
+[![Downloads](https://static.pepy.tech/badge/zibal-payment?style=flat)](https://pepy.tech/project/zibal-payment)
+
 </div>
 
 ## Overview
 
 The **[Zibal Payment Package](https://pypi.org/project/zibal-payment/)** is a Python package designed to simplify the integration of the Zibal payment gateway into Django and other Python applications. Whether you're working with a simple Python application or a Django project, this package provides an easy-to-use solution for managing Zibal payments.
+
 
 ### 🌟 **Features**
 
